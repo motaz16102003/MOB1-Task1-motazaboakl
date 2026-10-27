@@ -1,17 +1,24 @@
 
 workflows:
   android-build:
-    name: Birthday Card APK
-    max_build_duration: 30
-    
+    name: Build All 5 Android Apps
+    max_build_duration: 60
     environment:
       java: 17
-  
     scripts:
-      - name: Build BirthdayCard debug APK
-        script: |
-          cd BirthdayCard
-          gradle assembleDebug
-
+      - name: Build BirthdayCard
+        script: cd BirthdayCard && gradle assembleDebug
+      - name: Build TaskDone
+        script: cd TaskDone && gradle assembleDebug
+      - name: Build Quadrant
+        script: cd Quadrant && gradle assembleDebug
+      - name: Build Article
+        script: cd Article && gradle assembleDebug
+      - name: Build BusinessCard
+        script: cd BusinessCard && gradle assembleDebug
     artifacts:
       - BirthdayCard/app/build/outputs/apk/debug/*.apk
+      - TaskDone/app/build/outputs/apk/debug/*.apk
+      - Quadrant/app/build/outputs/apk/debug/*.apk
+      - Article/app/build/outputs/apk/debug/*.apk
+      - BusinessCard/app/build/outputs/apk/debug/*.apk
