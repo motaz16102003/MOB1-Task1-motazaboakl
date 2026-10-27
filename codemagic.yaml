@@ -6,11 +6,12 @@ workflows:
     
     environment:
       java: 17
+  
     scripts:
       - name: Build BirthdayCard debug APK
         script: |
           cd BirthdayCard
-          chmod +x gradlew
-          ./gradlew assembleDebug
+          gradle assembleDebug
+
     artifacts:
       - BirthdayCard/app/build/outputs/apk/debug/*.apk
